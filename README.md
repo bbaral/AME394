@@ -1,4 +1,6 @@
 # AME394
-Fall16 - AME394 Programming for Internet of Things
+Fall16 -  Programming for Internet of Things
+
+This is my class repo
 
 
