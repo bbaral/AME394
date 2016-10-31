@@ -23,7 +23,7 @@ app.get('/addSensorData', function(req, res){
 
 app.get('/getData', function(req, res) {
   var info = req.query;
-  var start = info.startTime;
+  var start = parseInt(info.startTime);
   db.collection('data').find({ts:{$gte:start}}).limit(20).toArray(function(err, result){
     f(err){
           res.send("[]")
