@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <style>
+        html, body, input, select, textarea
+        {
+            font-size: 1.05em !important;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Six Hour Data Log</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="temp">Temperature:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="temp">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="moisture">Moisture:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="moisture">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="moisture">Humidity:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="Humidity">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-4">
+                <button type="submit" value="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
