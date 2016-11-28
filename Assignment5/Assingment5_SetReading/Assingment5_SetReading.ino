@@ -8,8 +8,8 @@
 
 #include <ESP8266WiFi.h>
 
-const char* ssid     = "iPhone (2)";
-const char* password = "12345678";
+const char* ssid     = "Bikram's iPhone";
+const char* password = "f7krau****7l";
 
 const char* host = "ec2-54-244-202-56.us-west-2.compute.amazonaws.com";
 //const char* streamId   = "....................";
