@@ -43,6 +43,9 @@ void loop()
 
   url += position;
 
+  Serial.print("Requesting URL: ");
+  Serial.println(url);
+
   for (val = 255; val > 0; val--)
   {
     analogWrite(11, val);
@@ -58,4 +61,16 @@ void loop()
     delay(1);
   }
   Serial.println(url, DEC);
+
+    client.print(String("GET ") + url + " HTTP/1.1\r\n" +
+               "Host: " + host + "\r\n" + 
+               "Connection: close\r\n\r\n");
+  unsigned long timeout = millis();
+  while (client.available() == 0) {
+    if (millis() - timeout > 5000) {
+      Serial.println(">>> Client Timeout !");
+      client.stop();
+      return;
+    }
+  }
 }
