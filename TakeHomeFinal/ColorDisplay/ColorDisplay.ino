@@ -1,5 +1,13 @@
-#include <b64.h>
-#include <HttpClient.h>
+#include <Dhcp.h>
+#include <Dns.h>
+#include <Ethernet.h>
+//#include <EthernetClient.h>
+//#include <EthernetServer.h>
+//#include <EthernetUdp.h>
+
+//#include <b64.h>
+//#include <HttpClient.h>
+
 
 /* RGB module project code
  * tutorial url: http://osoyoo.com/?p=549
@@ -30,7 +38,7 @@ void loop()
   //This is for potentiometer
   position = map(analogRead(potentiometer), 0, 1023, 0, 255);
 
-  HttpClient client;
+  EthernetClient client;
     const int httpPort = 8080;
   if (!client.connect(host, httpPort)) {
     Serial.println("connection failed");

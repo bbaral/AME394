@@ -62,7 +62,7 @@ var start = function(){
   }
   rst = new Date(rst).getTime()
 
-	loadFile("./getData?startTime=" + rst, function(res){
+	loadFile("./getFinalData?startTime=" + rst, function(res){
 	    var data = JSON.parse(res);
 	    /*var graphData =  [
 		['data1', 30, 200, 100, 400, 150, 250],
