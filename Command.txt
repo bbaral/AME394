@@ -1,0 +1,39 @@
+ssh -i ~/.ssh/filename.pem ec2-user@ec2-XXX-XX-XXX-XXX.eu-west-1.compute.amazonaws.com
+
+For Putty
+
+Enter -- ec2-user@ec2-XX-XXX-XXX-XXX.eu-west-1.compute.amazonaws.com
+Go to SSH and Auth - Browse for .ppk file and hit enter
+
+
+MongoDB
+
+sudo service mongod start
+
+and type ‘mongo’ to connect to test.  
+
+connect to test
+
+and create the db name sensorData
+
+
+//Real command — specifically add as it is. 
+
+db.createUser(
+{
+user: "user",
+pwd: "pwd",
+roles: [ "readWrite", "dbAdmin" ]
+}
+)
+
+mkdir dbExample
+
+and than 
+
+ssh -i ~/.ssh/filename.pem ec2-user@ec2-XX-XXX-XX-XXX.us-west-2.compute.amazonaws.com
+
+db.createUser({“user”:”user”,”pwd”:”pwd”,roles: [{role:"readWrite", db:“sensorData”}]})
+
+
+
