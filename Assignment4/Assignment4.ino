@@ -21,10 +21,10 @@ byte dht_dat[5];
 
 #include <ESP8266WiFi.h>
 
-const char* ssid     = "Bikram's iPhone";
-const char* password = "f7krau***g7l";
+const char* ssid     = "<enter hotspot username>";
+const char* password = "<enter hotspot password>";
 
-const char* host = "ec2-54-244-202-56.us-west-2.compute.amazonaws.com";
+const char* host = "<enter hostname>";
 //const char* streamId   = "....................";
 //const char* privateKey = "....................";
 

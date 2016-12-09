@@ -1,4 +1,4 @@
-/*
+ /*
  *  This sketch sends data via HTTP GET requests to data.sparkfun.com service.
  *
  *  You need to get streamId and privateKey at data.sparkfun.com and paste them
@@ -8,19 +8,23 @@
 
 #include <ESP8266WiFi.h>
 
-const char* ssid     = "<enter hotspot username>";
+const char* ssid     = "<Enter hotspot username>";
 const char* password = "<enter hotspot password>";
 
 const char* host = "<enter hostname>";
 //const char* streamId   = "....................";
 //const char* privateKey = "....................";
 
-const int pot = A0;
-int brightness = 0;
+const int buttonpin = D3;
+
+int buttonpress = 0;
+int lastbuttonpress = 0;
 
 void setup() {
   Serial.begin(115200);
   delay(10);
+
+  pinMode(buttonpin, INPUT);
 
   // We start by connecting to a WiFi network
 
@@ -45,12 +49,13 @@ void setup() {
 int value = 0;
 
 void loop() {
-  delay(5000);
+  delay(100);
   ++value;
+buttonpress = digitalRead(buttonpin);
 
-  brightness = map(analogRead(pot), 0, 1023, 0, 255);
 
-  Serial.print("connecting to ");
+  if(buttonpress == HIGH && lastbuttonpress == LOW) {
+    Serial.print("connecting to ");
   Serial.println(host);
   
   // Use WiFiClient class to create TCP connections
@@ -59,22 +64,14 @@ void loop() {
   if (!client.connect(host, httpPort)) {
     Serial.println("connection failed");
     return;
-  }
+  } 
   
   // We now create a URI for the request
-  String url = "/setReading";
-  /*
-  url += streamId;
-  url += "?private_key=";
-  url += privateKey;
-  url += "&value=";
-  url += value;
-  */
-  url += "?r=";
-  url += brightness;
+  String url = "/buttonPressed";
   
   Serial.print("Requesting URL: ");
   Serial.println(url);
+
   
   // This will send the request to the server
   client.print(String("GET ") + url + " HTTP/1.1\r\n" +
@@ -88,14 +85,9 @@ void loop() {
       return;
     }
   }
-  
-  // Read all the lines of the reply from server and print them to Serial
-  while(client.available()){
-    String line = client.readStringUntil('\r');
-    Serial.print(line);
-  }
-  
   Serial.println();
-  Serial.println("closing connection");
-}
+  Serial.println("closing connection"); 
+  }
 
+  lastbuttonpress = buttonpress;
+}
